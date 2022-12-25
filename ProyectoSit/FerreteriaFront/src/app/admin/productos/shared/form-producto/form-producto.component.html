@@ -1,0 +1,84 @@
+<div class="row">
+    <div class="col-md-offset-3 mx-auto">
+      <form (ngSubmit)="save()" autocomplete="off" [formGroup]="form" #frmLibro="ngForm">
+
+        <mat-form-field class="d-block">
+          <mat-label>Categoria</mat-label>
+          <mat-select formControlName="categoria">
+            <mat-option *ngFor="let categoria of categoria" [value]="categoria">
+              {{categoria}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.hasError('required', 'categoria')">
+            Este campo es obligatorio
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="d-block">
+            <mat-label>Nombre</mat-label>
+            <input
+              matInput
+              type="text"
+              placeholder="Nombre"
+              formControlName="nombre"
+            />
+            <mat-error *ngIf="form.hasError('required', 'nombre')">
+              Este campo es obligatorio
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="d-block">
+            <mat-label>Marca</mat-label>
+            <input
+              matInput
+              type="text"
+              placeholder="Marca"
+              formControlName="marca"
+            />
+            <mat-error *ngIf="form.hasError('required', 'nombre')">
+              Este campo es obligatorio
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="d-block">
+          <mat-label>Precio</mat-label>
+          <input
+            matInput
+            type="number"
+            placeholder="Precio"
+            formControlName="precio"
+          />
+          <mat-error *ngIf="form.hasError('required', 'price')">
+            Este campo es obligatorio
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="d-block">
+          <mat-label>Stock</mat-label>
+          <input
+            matInput
+            type="number"
+            placeholder="Stock"
+            formControlName="stock"
+          />
+          <mat-error *ngIf="form.hasError('required', 'price')">
+            Este campo es obligatorio
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button routerLink="/admin/productos" color="primary">Cancelar</button>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="ms-2"
+          [disabled]="frmLibro.invalid"
+        >
+          Guardar
+        </button>
+      </form>
+    </div>
+  </div>
+
+

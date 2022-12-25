@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "dc777f67-bc1b-47e2-a183-78663b5b313a",
+		"name": "Ferreteria",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18052440"
+	},
+	"item": [
+		{
+			"name": "listar ventas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/venta/listar",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"venta",
+						"listar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar productos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/producto/listar",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"producto",
+						"listar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar producto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"wincha\",\r\n    \"marca\": \"truper\",\r\n    \"categoria\": \"herramientas\",\r\n    \"precio\": 15.90,\r\n    \"stock\": 14\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/producto",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"producto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eliminar producto",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/producto/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"producto",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eliminar venta",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/venta/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"venta",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "agregar producto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"wincha\",\r\n    \"marca\": \"truper\",\r\n    \"categoria\": \"herramientas\",\r\n    \"precio\": 15.90,\r\n    \"stock\": 14\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/producto",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"producto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "agregar venta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\":\"roberto\",\r\n  \"apellido\":\"especial\",\r\n  \"dni\":\"12345678\",\r\n  \"correo\":\"hvf@gmail.com\",\r\n  \"telefono\":\"123456789\",\r\n  \"items\":[\r\n     {\r\n       \"quantity\":1,       \r\n       \"producto\":{\r\n         \"id\":1  \r\n       }\r\n     },\r\n     {\r\n       \"quantity\":2,       \r\n       \"producto\":{\r\n         \"id\":3  \r\n       }\r\n     }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/venta",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"venta"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:8080/api",
+			"type": "string"
+		}
+	]
+}

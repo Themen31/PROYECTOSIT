@@ -1,0 +1,111 @@
+<div style="margin-left: 550px; width: 400px" class="text-base shadow-md px-8 pt-6 pb-8 w-7/12 flex flex-col bg-gray-100 my-10 max-w-md rounded-3xl text-gray-500">
+    <form autocomplete="off" [formGroup]="form" (ngSubmit)="save()" #frmOrder="ngForm">
+      
+      <div>
+        <mat-form-field class="w-11/12">
+          <mat-label>Nombre</mat-label>
+          <input matInput autocomplete="off" formControlName="nombre">
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="w-10/12">
+          <mat-label>Apellido</mat-label>
+          <input matInput autocomplete="off" formControlName="apellido" >
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="w-10/12">
+          <mat-label>DNI</mat-label>
+          <input matInput autocomplete="off" formControlName="dni" >
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="w-10/12">
+          <mat-label>correo</mat-label>
+          <input matInput autocomplete="off" formControlName="correo" >
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="w-10/12">
+          <mat-label>telefono</mat-label>
+          <input matInput autocomplete="off" formControlName="telefono" >
+        </mat-form-field>
+      </div>
+      
+    </form>
+</div>
+
+<div style="margin-left: 550px; width: 400px" class="text-base shadow-md px-8 pt-6 pb-8 w-7/12 flex flex-col bg-gray-100 my-10 w-9/12 rounded-3xl text-gray-500">
+    <form autocomplete="off" [formGroup]="form" (ngSubmit)="save()" #frmOrder="ngForm">
+        <div>
+            <mat-form-field appearance="outline" class="w-11/12">
+                <mat-label>Producto (escribe aqui)</mat-label>
+                <input
+                  type="text"
+                  placeholder="Escribe una letra para buscar un producto"
+                  matInput
+                  [matAutocomplete]="autoProducto"
+                  [formControl]="myControlProducto"
+                  formControlName="producto"
+                />
+
+                <mat-autocomplete
+                  #autoProducto="matAutocomplete"
+                  [displayWith]="mostrarProducto"
+                >
+                  <mat-option *ngFor="let p of platosFiltrados$ | async" [value]="p">
+                    {{ p.nombre }}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+          </div>
+
+        <div>
+        <mat-form-field class="w-11/12">
+            <mat-label>Cantidad</mat-label>
+            <mat-select formControlName="quantity">
+              <mat-option *ngFor="let cantidad of cantidad" [value]="cantidad">
+                {{cantidad}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="mb-5">
+        <button
+          mat-raised-button
+          color="primary"
+          type="button"
+          (click)="agregarProducto()">
+          Agregar producto
+        </button>
+        <button mat-raised-button color="primary" type="submit">Realizar Venta</button>
+      </div>
+      <table class="table text-center font-medium" *ngFor="let old of orderLines; let i = index">
+          <td>Producto</td>
+          <td>{{old.producto.nombre}}</td>
+          <td>Precio</td>
+          <td>{{old.producto.precio}}</td>
+          <td>Cantidad</td>
+          <td>{{old.quantity}}</td>
+          <td>
+            <button
+              mat-raised-button
+              color="warn"
+              type="button"
+              (click)="removerProducto(i)">
+              Eliminar
+            </button>
+          </td>
+      </table>
+    </form>
+    <div class="text-end">
+        <button mat-raised-button color="primary" (click)="back()">
+          Atras
+        </button>
+      </div>
+</div>
+
